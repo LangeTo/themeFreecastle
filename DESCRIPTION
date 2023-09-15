@@ -3,7 +3,7 @@ Type: Package
 Title: What the Package Does (Title Case)
 Version: 0.1.1
 Author: Tobias Hundertmark
-Maintainer: Tobias Hundertmark <mail>
+Maintainer: Tobias Hundertmark <tobias.hundertmark@imtek.uni-freiburg.de>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
 License: What license is it under?
