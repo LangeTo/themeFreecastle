@@ -5,6 +5,7 @@ if (!require(ggplot2)) {
 
 theme_freecastle <- function(axis_lines = TRUE,
                              grid_lines = FALSE,
+                             strip_background = TRUE,
                              text_size = 12,
                              title_size = 14,
                              line_size = 1,
@@ -15,17 +16,8 @@ theme_freecastle <- function(axis_lines = TRUE,
     base_size = text_size
   )
 
-  # remove grid lines and color background that is needed for
-  # facet_zoom with ggforce
-  th <- th + theme(
-    panel.grid = element_blank(),
-    strip.background = element_rect(
-      fill = "grey90",
-      color = "grey80",
-      linewidth = 1,
-      linetype = "dashed"
-    )
-  )
+  # remove grid lines
+  th <- th + theme(panel.grid = element_blank())
 
   # more space for axis text/title and plot title
   th <- th + theme(
@@ -82,5 +74,15 @@ theme_freecastle <- function(axis_lines = TRUE,
       theme(panel.grid.major = element_line(size = 0.2, color = "grey"))
   }
 
+  # if background for facet_wrap and facet_zoom is desired
+  if (strip_background) {
+    th <- th +
+      theme(strip.background = element_rect(
+        fill = "grey90",
+        color = "grey80",
+        linewidth = 1,
+        linetype = "dashed"
+      ))
+  }
   return(th)
 }
