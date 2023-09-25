@@ -6,19 +6,67 @@ if (!require(ggplot2)) {
 theme_freecastle <- function(axis_lines = TRUE,
                              grid_lines = FALSE,
                              text_size = 12,
-                             line_size = 0.5,
-                             # replace with 'sans' if not working
+                             title_size = 14,
+                             line_size = 1,
                              base_family = "sans") {
-  # start with theme_minimal because it is really simple.
+  # start from modifying theme_minimal
   th <- ggplot2::theme_minimal(
     base_family = base_family,
     base_size = text_size
   )
 
-  # remove the grid lines
-  th <- th + theme(panel.grid = element_blank())
+  # remove grid lines and color background that is needed for
+  # facet_zoom with ggforce
+  th <- th + theme(
+    panel.grid = element_blank(),
+    strip.background = element_rect(
+      fill = "grey90",
+      color = "grey80",
+      linewidth = 1,
+      linetype = "dashed"
+    )
+  )
 
-  # if we want axis lines
+  # more space for axis text/title and plot title
+  th <- th + theme(
+    # axis settings
+    axis.title.x = element_text(margin = margin(t = 10), size = title_size),
+    axis.text.x = element_text(
+      margin = margin(t = 5),
+      size = text_size,
+      face = "bold"
+    ),
+    axis.title.y = element_text(margin = margin(r = 10), size = title_size),
+    axis.text.y = element_text(
+      margin = margin(r = 5),
+      size = text_size,
+      face = "bold"
+    ),
+    # title settings
+    plot.title = element_text(
+      margin = margin(b = 10),
+      size = title_size,
+      face = "bold"
+    ),
+    plot.subtitle = element_text(
+      margin = margin(b = 10),
+      size = text_size,
+      face = "bold"
+    ),
+    # legend settings
+    legend.justification = "top",
+    legend.title = element_text(
+      margin = margin(b = 10),
+      size = text_size,
+      face = "bold"
+    ),
+    legend.text = element_text(size = text_size),
+    # headings of facet_wrap are changed with this command
+    strip.text = element_text(size = title_size)
+  )
+
+  # adjustable part
+  # axis lines
   if (axis_lines) {
     # We add axis lines and give them our preferred thickness
     th <- th +
@@ -27,24 +75,12 @@ theme_freecastle <- function(axis_lines = TRUE,
         axis.ticks = element_line(size = line_size)
       )
   }
-  # do we want grid lines?
+
+  # major grid lines
   if (grid_lines) {
     th <- th +
       theme(panel.grid.major = element_line(size = 0.2, color = "grey"))
   }
-
-  # more space for axis text/title and plot title
-  th <- th + theme(
-    axis.title.x = element_text(margin = margin(t = 10), size = 20),
-    axis.text.x = element_text(margin = margin(t = 5), size = 12, face = "bold"),
-    axis.title.y = element_text(margin = margin(r = 10), size = 20),
-    axis.text.y = element_text(margin = margin(r = 5), size = 12, face = "bold"),
-    plot.title = element_text(margin = margin(b = 10)),
-    legend.justification = "top",
-    legend.title = element_text(face = "bold", size = 20),
-    legend.text = element_text(size = 12),
-    strip.text = element_text(size = 20)
-  )
 
   return(th)
 }
