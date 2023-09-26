@@ -54,7 +54,9 @@ theme_freecastle <- function(axis_lines = TRUE,
     ),
     legend.text = element_text(size = text_size),
     # headings of facet_wrap are changed with this command
-    strip.text = element_text(size = title_size)
+    strip.text = element_text(size = title_size),
+    # adjust the size of captions for labs
+    plot.caption = element_text(size = text_size, face = "bold")
   )
 
   # adjustable part
