@@ -22,18 +22,15 @@ theme_freecastle <- function(axis_lines = TRUE,
   # more space for axis text/title and plot title
   th <- th + theme(
     # axis settings
+    axis.text = element_text(
+      size = text_size,
+      face = "bold",
+      color = "black"
+    ),
     axis.title.x = element_text(margin = margin(t = 10), size = title_size),
-    axis.text.x = element_text(
-      margin = margin(t = 5),
-      size = text_size,
-      face = "bold"
-    ),
+    axis.text.x = element_text(margin = margin(t = 5)),
     axis.title.y = element_text(margin = margin(r = 10), size = title_size),
-    axis.text.y = element_text(
-      margin = margin(r = 5),
-      size = text_size,
-      face = "bold"
-    ),
+    axis.text.y = element_text(margin = margin(r = 5)),
     # title settings
     plot.title = element_text(
       margin = margin(b = 10),
