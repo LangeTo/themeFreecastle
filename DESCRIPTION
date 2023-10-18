@@ -1,7 +1,7 @@
 Package: themeFreecastle
 Type: Package
 Title: What the Package Does (Title Case)
-Version: 0.2.4
+Version: 0.3.0
 Author: Tobias Hundertmark
 Maintainer: Tobias Hundertmark <tobias.hundertmark@imtek.uni-freiburg.de>
 Description: More about what it does (maybe more than one line)
