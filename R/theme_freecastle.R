@@ -6,15 +6,10 @@ if (!require(ggplot2)) {
 theme_freecastle <- function(axis_lines = TRUE,
                              grid_lines = FALSE,
                              strip_background = TRUE,
-                             text_size = 12,
-                             title_size = 14,
                              line_size = 1,
                              base_family = "sans") {
   # start from modifying theme_minimal
-  th <- ggplot2::theme_minimal(
-    base_family = base_family,
-    base_size = text_size
-  )
+  th <- ggplot2::theme_minimal()
 
   # remove grid lines
   th <- th + theme(panel.grid = element_blank())
@@ -23,37 +18,19 @@ theme_freecastle <- function(axis_lines = TRUE,
   th <- th + theme(
     # axis settings
     axis.text = element_text(
-      size = text_size,
-      face = "bold",
       color = "black"
     ),
-    axis.title.x = element_text(margin = margin(t = 10), size = title_size),
+    axis.title.x = element_text(margin = margin(t = 10)),
     axis.text.x = element_text(margin = margin(t = 5)),
-    axis.title.y = element_text(margin = margin(r = 10), size = title_size),
+    axis.title.y = element_text(margin = margin(r = 10)),
     axis.text.y = element_text(margin = margin(r = 5)),
     # title settings
-    plot.title = element_text(
-      margin = margin(b = 10),
-      size = title_size,
-      face = "bold"
-    ),
-    plot.subtitle = element_text(
-      margin = margin(b = 10),
-      size = text_size,
-      face = "bold"
-    ),
+    plot.title = element_text(margin = margin(b = 10)),
+    plot.subtitle = element_text(margin = margin(b = 10)),
     # legend settings
-    legend.justification = "top",
-    legend.title = element_text(
-      margin = margin(b = 10),
-      size = text_size,
-      face = "bold"
-    ),
-    legend.text = element_text(size = text_size),
-    # headings of facet_wrap are changed with this command
-    strip.text = element_text(size = title_size),
-    # adjust the size of captions for labs
-    plot.caption = element_text(size = text_size, face = "bold")
+    legend.position = "top",
+    legend.justification = "center",
+    legend.title = element_text(margin = margin(b = 10))
   )
 
   # adjustable part
