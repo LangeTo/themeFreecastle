@@ -20,17 +20,17 @@ theme_freecastle <- function(axis_lines = TRUE,
     axis.text = element_text(
       color = "black"
     ),
-    axis.title.x = element_text(margin = margin(t = 10)),
+    axis.title.x = element_text(margin = margin(t = 10), size = 11),
     axis.text.x = element_text(margin = margin(t = 5)),
-    axis.title.y = element_text(margin = margin(r = 10)),
+    axis.title.y = element_text(margin = margin(r = 10), size = 11),
     axis.text.y = element_text(margin = margin(r = 5)),
     # title settings
-    plot.title = element_text(margin = margin(b = 10)),
-    plot.subtitle = element_text(margin = margin(b = 10)),
+    plot.title = element_text(margin = margin(b = 10), size = 11),
+    plot.subtitle = element_text(margin = margin(b = 10), size = 11),
     # legend settings
     legend.position = "top",
     legend.justification = "center",
-    legend.title = element_text(margin = margin(b = 10))
+    legend.title = element_text(margin = margin(b = 10), size = 11)
   )
 
   # adjustable part
