@@ -17,9 +17,7 @@ theme_freecastle <- function(axis_lines = TRUE,
   # more space for axis text/title and plot title
   th <- th + theme(
     # axis settings
-    axis.text = element_text(
-      color = "black"
-    ),
+    axis.text = element_text(color = "black"),
     axis.title.x = element_text(margin = margin(t = 10), size = rel(0.9)),
     axis.text.x = element_text(margin = margin(t = 5)),
     axis.title.y = element_text(margin = margin(r = 10), size = rel(0.9)),
@@ -30,7 +28,9 @@ theme_freecastle <- function(axis_lines = TRUE,
     # legend settings
     legend.position = "top",
     legend.justification = "center",
-    legend.title = element_text(margin = margin(b = 10), size = rel(0.9))
+    legend.title = element_text(margin = margin(b = 10), size = rel(0.9)),
+    # adjust plot margins for larger plot area
+    plot.margin = margin(t = 0, r = 0, b = 0, l = 0, unit = "cm")
   )
 
   # adjustable part
@@ -39,26 +39,28 @@ theme_freecastle <- function(axis_lines = TRUE,
     # We add axis lines and give them our preferred thickness
     th <- th +
       theme(
-        axis.line = element_line(size = line_size),
-        axis.ticks = element_line(size = line_size)
+        axis.line = element_line(linewidth = line_size),
+        axis.ticks = element_line(linewidth = line_size)
       )
   }
 
   # major grid lines
   if (grid_lines) {
     th <- th +
-      theme(panel.grid.major = element_line(size = 0.2, color = "grey"))
+      theme(panel.grid.major = element_line(linewidth = 0.2, color = "grey"))
   }
 
   # if background for facet_wrap and facet_zoom is desired
   if (strip_background) {
     th <- th +
-      theme(strip.background = element_rect(
-        fill = "grey90",
-        color = "grey80",
-        linewidth = 1,
-        linetype = "dashed"
-      ))
+      theme(
+        strip.background = element_rect(
+          fill = "grey90",
+          color = "grey80",
+          linewidth = 1,
+          linetype = "dashed"
+        )
+      )
   }
   return(th)
 }
